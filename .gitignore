@@ -1,7 +1,14 @@
+# hidden files
+.idea
+.gradle/
+.vscode/
+*.iml
+
+# output folders
 bin/
-*.pdf
-gradle/
-gradlew.bat
 build/
+
+# files ignored by extension
 *.class
-.vscode
+*.DS_Store
+deleteme/

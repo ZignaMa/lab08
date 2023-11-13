@@ -21,13 +21,16 @@ public class TestStrictBankAccount {
 
     @BeforeEach
     public void setUp() {
-        fail();
+        this.mRossi=new AccountHolder("Mario", "Rossi", 1111);
+        this.bankAccount=new StrictBankAccount(mRossi, INITIAL_AMOUNT);
     }
 
     // 2. Test the initial state of the StrictBankAccount
     @Test
     public void testInitialization() {
-        fail();
+        assertEquals(mRossi, bankAccount.getAccountHolder());
+        assertEquals(INITIAL_AMOUNT, bankAccount.getBalance());
+        assertEquals(0, bankAccount.getTransactionsCount());
     }
 
 

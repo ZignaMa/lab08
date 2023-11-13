@@ -1,0 +1,7 @@
+bin/
+*.pdf
+gradle/
+gradlew.bat
+build/
+*.class
+.vscode

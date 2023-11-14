@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static it.unibo.bank.impl.SimpleBankAccount.*;
-import static it.unibo.bank.impl.SimpleBankAccount.ATM_TRANSACTION_FEE;
 import static it.unibo.bank.impl.StrictBankAccount.TRANSACTION_FEE;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,18 +36,20 @@ public class TestStrictBankAccount {
     // 3. Perform a deposit of 100€, compute the management fees, and check that the balance is correctly reduced.
     @Test
     public void testManagementFees() {
-        fail();
+        bankAccount.deposit(1111, 100.0);
+        bankAccount.chargeManagementFees(1111);
+        assertEquals(100+100-TRANSACTION_FEE-MANAGEMENT_FEE, bankAccount.getBalance());
     }
 
     // 4. Test the withdraw of a negative value
     @Test
     public void testNegativeWithdraw() {
-        fail();
+        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(1111, -1.0));
     }
 
     // 5. Test withdrawing more money than it is in the account
     @Test
     public void testWithdrawingTooMuch() {
-        fail();
+        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(1111, Integer.MAX_VALUE));
     }
 }

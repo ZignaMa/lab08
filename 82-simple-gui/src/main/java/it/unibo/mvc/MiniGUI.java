@@ -1,10 +1,16 @@
 package it.unibo.mvc;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,12 +42,33 @@ public class MiniGUI {
         /*
          * Handlers
          */
+        
+
+        final JPanel panel= new JPanel();
+        /* frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
+        frame.setContentPane(panel);
+        panel.add(new JButton("new my button"));       
+        panel.add(new JButton("new my button2"));
+ */
+        JTextField jt=new JTextField();
+        jt.setColumns(20);
+        //JLabel jl=new JLabel("Result");
+        frame.setLayout(new BorderLayout());
+        //frame.setContentPane(panel);
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println(randomGenerator.nextInt());
+                var res=randomGenerator.nextInt();
+                System.out.println(res);
+                jt.setText(Integer.toString(res));
             }
         });
+        frame.add(panel, BorderLayout.NORTH);
+        panel.add(new JLabel("Result"));
+        panel.add(jt);
+        panel.add(write);
+
+
     }
 
     private void display() {
